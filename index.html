@@ -7,14 +7,26 @@
         <script src="scipt.js"></script>
     </head>
     <body>
-        <div id="label">
-            <img id="icon" src="faces/cool.svg" alt="Face">
-            <h1 id="lvlname">Level </h1>
-            <h1 id="level">0</h1>
+        <div class="container">
+          <div class="game-mode">
+            <div class="left">
+              <h2>Timed</h2>
+              <p>Each level is timed and time reduces on each level.</p>
+            </div>
+            <div class="right">
+              <button onclick="startGameMode1()">Play</button>
+            </div>
+          </div>
+          
+          <div class="game-mode">
+            <div class="left">
+              <h2>Leveled</h2>
+              <p>Target moves and speed increases on each level.</p>
+            </div>
+            <div class="right">
+              <button onclick="startGameMode2()">Play</button>
+            </div>
+          </div>
         </div>
-        <div id="area">
-            <img id="face" src="faces/cool.svg" alt="I'm here" onclick=levelUp()>
-        </div>
-       
-    </body>
+      </body>
 </html>

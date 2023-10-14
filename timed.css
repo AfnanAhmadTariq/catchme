@@ -1,0 +1,70 @@
+*{
+    cursor: url(pointers/Black-Arrow.png), url(pointers/White-Arrow.png), url(pointers/reload.png),auto;
+}
+body{
+    top: 0;
+    left: 0;
+    height: 100% - 2vh;
+    width: 100% - 2vh;
+}
+#block{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    height: auto;
+    display: list-item;
+}
+#label{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    justify-content: center;
+    align-items: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: xx-large;
+    color: black;
+}
+#label #icon{
+    cursor: not-allowed;
+    margin-inline: 1vh;
+    width: 6vh;
+    display: inline;
+}
+#label h1{
+    margin-inline: 1vh;
+    display: inline;
+}
+#time{
+    margin-top: 11vh;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+}
+#time h2{
+    margin-inline: 1vh;
+    display: inline;
+}
+#points{
+    margin-top: 16vh;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    justify-content: center;
+    align-items: center;
+}
+#points h2{
+    margin-inline: 1vh;
+    display: inline;
+}
+#face{
+    cursor: pointer;
+    position: absolute;
+    width: 3vh;
+    top: 50%;
+    left: 50%;
+}
