@@ -72,8 +72,9 @@ function levelUp() {
             default:
                 time = time - 200;
         }
-      clearInterval(intervalId);
-      intervalId = setInterval(setRandomPosition, time);
+        setRandomPosition();
+        clearInterval(intervalId);
+        intervalId = setInterval(setRandomPosition, time);
     }
 }
 
