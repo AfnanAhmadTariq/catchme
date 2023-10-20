@@ -1,4 +1,4 @@
-var timeInterval = 3000;
+var timeInterval = 3100;
 var totalTime = 6000;
 var time;
 var intervalId;
@@ -10,23 +10,33 @@ var startY;
 var endX;
 var endY;
 var lvlname; 
-//Automatic
-window.onload = function() {
+
+//Local Storage
+var face = "faces/cool.svg";
+var screenMode = "light";
+
+//animation
+var initialPosition;
+var position;
+var startTime;
+
+//Start
+function start() {
+    document.getElementById('start').style.display = 'none';
     image = document.getElementById('face');
+    document.getElementById('icon').src = image.src = face;
     time = document.getElementById('time-remaining');
     bodyWidth = document.body.offsetWidth;
     bodyHeight = document.body.offsetHeight;
-    var label = document.getElementById('label');
-    var rect = label.getBoundingClientRect();
+    var rect = document.getElementById('label').getBoundingClientRect();
     startX = rect.left + window.scrollX;
     startY = rect.top + window.scrollY;
     endX = rect.right + window.scrollX;
     endY = rect.bottom + window.scrollY;
     lvlname = document.getElementById('lvlname');
     if(time){
-        var point = document.getElementById('points');
-        var rectPoint = point.getBoundingClientRect();
-        endY += rectPoint.bottom + window.scrollY;
+        const point = document.getElementById('points').getBoundingClientRect();
+        endY = point.bottom + window.scrollY;
         updateTime();
     }
     else
@@ -40,12 +50,38 @@ function getRandomPosition() {
     return [randomX, randomY];
 }       
 function setRandomPosition() {
-    var position = getRandomPosition();
+    position = getRandomPosition();
     while(position[0]>=startX && position[0]<=endX && position[1]>=startY && position[1]<= endY){
         position = getRandomPosition();
     }
-    image.style.left = position[0] + 'px';
-    image.style.top = position[1] + 'px';
+    if(!time){
+        var currentCordinates = image.getBoundingClientRect();
+        initialPosition = [ 
+            currentCordinates.left + window.scrollX,
+            currentCordinates.top + window.scrollY
+        ];
+        startTime = null;
+        requestAnimationFrame(animateImage);
+    }
+    else{
+        image.style.left = position[0] + 'px';
+        image.style.top = position[1] + 'px';
+    }
+}
+function animateImage(timestamp) {
+    if (!startTime) startTime = timestamp;
+    var progress = timestamp - startTime;
+    var percentage = Math.min(progress / (timeInterval-100) , 1);
+    var currentPosition = [
+        initialPosition[0] + (position[0] - initialPosition[0]) * percentage,
+        initialPosition[1] + (position[1] - initialPosition[1]) * percentage
+    ];
+    image.style.left = currentPosition[0] + 'px';
+    image.style.top = currentPosition[1] + 'px';
+    
+    if (progress < (timeInterval-100)) {
+        requestAnimationFrame(animateImage);
+    }
 }
 function updateTime(){
     currentTime = totalTime;
@@ -72,9 +108,9 @@ function levelUp() {
     if(lvlname.innerText=="Final"){
         alert("Congratulations, You Won!!");
         level.innerText = 0;
-        lvlname = "Level";
+        lvlname.innerText = "Level";
         clearInterval(intervalId);
-        intervalId = setInterval(setRandomPosition, 3000);
+        intervalId = setInterval(setRandomPosition, 3100);
         return;
     }
     var levelValue = parseInt(level.innerText);
@@ -87,19 +123,19 @@ function levelUp() {
         level.innerText = levelValue + 1;
     if (timeInterval > 50) {
         switch (timeInterval) {
-            case 3000:
+            case 3100:
                 timeInterval = timeInterval - 700;
               break;
-            case 2300:
+            case 2400:
                 timeInterval = timeInterval - 500;
               break;
-            case 1800:
+            case 1900:
                 timeInterval = timeInterval - 300;
               break;
-            case 1500:
+            case 1600:
                 timeInterval = timeInterval - 200;
                 break;
-            case 100:
+            case 200:
                 timeInterval = timeInterval - 50;
                 break;
             default:
@@ -179,14 +215,107 @@ function pointUp(counter, reset){
         counter.innerText = value + 1;
     }
 }
-
+function invert(){
+    const rootStyles = getComputedStyle(document.documentElement);
+    const primaryColor = rootStyles.getPropertyValue('--backgorund');
+    if(primaryColor=="black"){
+        screenMode = "light";
+        document.documentElement.style.setProperty('--backgorund', 'white');
+        document.documentElement.style.setProperty('--font', 'black');
+        document.documentElement.style.setProperty('--shadow', 'rgba(0, 0, 0, 0.1)');
+        const face = document.getElementById('face');
+        const icon = document.getElementById('icon');
+        const iconFaces = document.getElementsByClassName('iconFaces');
+        if(iconFaces){
+            console.log('goia');
+            for(var i=0; i<iconFaces.length; i++)
+                iconFaces[i].style.filter = "invert(0)";
+        }
+        if(face)
+            face.style.filter = "invert(0)";
+        icon.style.filter = "invert(0)"
+        document.body.style.cursor = 'url("pointers/Black-Arrow.png"), auto';
+    }
+    else{
+        screenMode = "dark";
+        document.documentElement.style.setProperty('--backgorund', 'black');
+        document.documentElement.style.setProperty('--font', 'white');
+        document.documentElement.style.setProperty('--shadow', 'rgba(255, 255, 255, 0.1)');
+        const face = document.getElementById('face');
+        const icon = document.getElementById('icon');
+        const iconFaces = document.getElementsByClassName('iconFaces');
+        if(iconFaces)
+            for(var i=0; i<iconFaces.length; i++)
+                iconFaces[i].style.filter = "invert(1)";
+        if(face)
+            face.style.filter = "invert(1)";
+        icon.style.filter = "invert(1)"
+        document.body.style.cursor = 'url("pointers/Black-Arrow(inverted).png"), auto';
+    }
+    const mode = document.getElementById('invert');
+    if(mode.innerText==="Dark Mode")
+        mode.innerText = "Light Mode";
+    else
+        mode.innerText = "Dark Mode";
+}
 
 //Game Modes
 
-function startGameMode1() {
+function timed() {
+    localStorage.setItem('face', face);
+    localStorage.setItem('mode', screenMode);
     window.location.href = 'timed.html';
-  }
-  
-  function startGameMode2() {
+}
+function leveled() {
+    localStorage.setItem('face', face);
+    localStorage.setItem('mode', screenMode);
     window.location.href = 'leveled.html';
-  }
+}
+function menu(open){
+    var elements = document.getElementsByClassName("menu");
+    for (var i = 0; i < elements.length; i++) {
+        elements[i].style.display = 'none';
+    }
+    if(open=="faces")
+        document.getElementById('faces').style.display='block';
+    else
+        document.getElementById(open).style.display ='block';
+}
+function faces(source){
+    document.getElementById('icon').src = source;
+    face = source;
+}
+function exitFaces(){
+    document.getElementById('faces').style.display='none';
+    document.getElementById('options').style.display ='block';
+}
+function back(){
+  localStorage.setItem('back', "play");
+  localStorage.setItem('face', face);
+  localStorage.setItem('mode', screenMode);
+  window.location.href = "index.html";
+}
+function exit(){
+    alert("Press ctrl + W");
+}
+
+// //Event Listener
+document.addEventListener('DOMContentLoaded', function() {
+    var source = localStorage.getItem('face');
+    if(source){
+        face = source;
+        localStorage.removeItem('face');
+    }
+    var appearance = localStorage.getItem('mode');
+    if(appearance){
+        if(appearance=="dark")
+            invert();
+        localStorage.removeItem('mode');
+    }
+    var passedValue = localStorage.getItem('back');
+    if (passedValue) {
+      menu(passedValue);
+      document.getElementById('icon').src = source;
+      localStorage.removeItem('back');
+    }
+});

@@ -1,11 +1,31 @@
+:root{
+    --backgorund: white;
+    --font: black;
+}
 *{
     cursor: url(pointers/Black-Arrow.png), url(pointers/White-Arrow.png), url(pointers/reload.png),auto;
 }
 body{
     top: 0;
     left: 0;
-    height: 100% - 2vh;
-    width: 100% - 2vh;
+    background-color: var(--backgorund);
+}
+#invert{
+    cursor: pointer;
+    float: right;
+    margin: 2vh;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: medium;
+    color: var(--font);
+}
+#back{
+    cursor: pointer;
+    float: left;
+    margin: 2vh;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: medium;
+    color: var(--font);
+    text-decoration: none;
 }
 #block{
     position: relative;
@@ -13,7 +33,6 @@ body{
     transform: translateX(-50%);
     width: auto;
     height: auto;
-    display: list-item;
 }
 #label{
     position: absolute;
@@ -23,13 +42,14 @@ body{
     align-items: center;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: xx-large;
-    color: black;
+    color: var(--font);
 }
-#label #icon{
+#icon{
     cursor: not-allowed;
     margin-inline: 1vh;
     width: 6vh;
     display: inline;
+    filter: invert(0);
 }
 #label h1{
     margin-inline: 1vh;
@@ -43,7 +63,7 @@ body{
     justify-content: center;
     align-items: center;
     font-family: Arial, Helvetica, sans-serif;
-    color: black;
+    color:var(--font);
 }
 #time h2{
     margin-inline: 1vh;
@@ -56,6 +76,7 @@ body{
     transform: translateX(-50%);
     justify-content: center;
     align-items: center;
+    color: var(--font);
 }
 #points h2{
     margin-inline: 1vh;
@@ -67,4 +88,23 @@ body{
     width: 3vh;
     top: 50%;
     left: 50%;
+    filter: invert(0);
+}
+#start{
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: block;
+    position: fixed;
+    background-color: rgba(127, 255, 212, 0.85);
+}
+#start h1{
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-family: Arial, Helvetica, sans-serif;
+    color:var(--font);
 }

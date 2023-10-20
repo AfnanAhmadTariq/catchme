@@ -1,60 +1,103 @@
+:root{
+    --backgorund: white;
+    --shadow: rgba(0, 0, 0, 0.1);
+    --font: black;
+    --mouse: url(pointers/Black-Arrow.png);
+}
 *{
+    margin: 0;
     cursor: url(pointers/Black-Arrow.png), url(pointers/White-Arrow.png), url(pointers/reload.png),auto;
 }
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
-    margin: 0;
-    padding: 0;
+body{
+    top: 0;
+    left: 0;
+    background-color: var(--backgorund);
 }
-
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
+#label{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: xx-large;
+    color: var(--font);
+    width: max-content;
+    display: block;
+    position: absolute;
+    margin-top: 3vh;
+    left: 50%;
+    transform: translateX(-60%);
 }
-
-.game-mode {
-    display: flex;
+#icon{
+    margin-inline: 1vh;
+    width: 8vh;
+    display: inline;
+    filter: invert(0);
+}
+#label h1{
+    margin-inline: 1vh;
+    display: inline;
+}
+.menu{
+    cursor: inherit;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* display: block; */
+    width: auto;
+    text-align: center;
+    color: var(--font);
+}
+.menu h1{
+    padding: 2vh;
+}
+.menu h1:hover{
+    background-color: aquamarine;
+}
+.menu h1:active{
+    background-size: cover;
+    background-color: var(--backgorund);
+    filter: invert(1);
+}
+#play{
+    display: none;
+}
+#options{
+    display: none;
+}
+#faces{
+    display: none;
+    cursor: inherit;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
     align-items: center;
-    justify-content: space-between;
-    background-color: #fff;
-    border-radius: 5px;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    justify-content: center;
 }
-
-.game-mode .left {
-    flex: 1;
+#faces ul{
+    cursor: inherit;
 }
-
-.game-mode .right {
-    flex: 1;
-    text-align: right;
+#faces ul li{
+    cursor: inherit;
+    display: inline-block;
 }
-
-.game-mode h2 {
-    margin: 0;
-    font-size: 24px;
-    color: #333;
-}
-
-.game-mode p {
-    margin: 10px 0;
-    color: #666;
-}
-
-.game-mode button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #4CAF50;
-    color: #fff;
-    border: none;
-    border-radius: 3px;
+.iconFaces{
     cursor: pointer;
+    width: 10vh;
+    margin: 5vh;
+    filter: invert(0);
 }
-
-.game-mode button:hover {
-    background-color: #45a049;
+#faces h1{
+    width: max-content;
+    padding: 2vh;
+    color: var(--font);
+    align-self: center;
+    margin: 0 auto;
+}
+#faces h1:hover{
+    background-color: aquamarine;
+}
+#faces h1:active{
+    background-size: cover;
+    background-color: var(--backgorund);
+    filter: invert(1);
 }

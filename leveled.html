@@ -1,12 +1,16 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <link rel="icon" href="Faces/cool.svg" type="image/svg">
+        <link rel="icon" href="faces/cool.svg" type="image/svg">
         <title>Catch Me | Leveled</title>
-        <link rel="stylesheet" href="leveled.css" type="text/css">
+        <link rel="stylesheet" href="game.css" type="text/css">
         <script src="scipt.js"></script>
     </head>
     <body>
+        <div id="options">
+            <h1 id="invert" onclick="invert()">Dark Mode</h1>
+            <h1 id="back" onclick="back()">Back</h1>
+        </div>
         <div id="label">
             <img id="icon" src="faces/cool.svg" alt="Face">
             <h1 id="lvlname">Level </h1>
@@ -14,6 +18,9 @@
         </div>
         <div id="area">
             <img id="face" src="faces/cool.svg" alt="I'm here" onclick=levelUp()>
+        </div>
+        <div id="start">
+            <h1 onclick="start()">Start!</h1>
         </div>
     </body>
 </html>
