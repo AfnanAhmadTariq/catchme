@@ -13,6 +13,29 @@ body{
     left: 0;
     background-color: var(--backgorund);
 }
+#background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    background-image: url('faces/cool.svg');
+    background-repeat: repeat;
+    background-size: 25vh;
+    animation: randomize 10s infinite;
+    filter: invert(0);
+}
+  
+@keyframes randomize {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 100% 100%;
+    }
+}
 #label{
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: xx-large;
@@ -77,11 +100,18 @@ body{
     cursor: inherit;
 }
 #faces ul li{
+    background: var(--backgorund);
     cursor: inherit;
     display: inline-block;
 }
+#faces ul li:hover{
+    background-color: aquamarine;
+}
+#faces ul li:active{
+   background-color: var(--backgorund);
+   filter: invert(1);
+}
 .iconFaces{
-    cursor: pointer;
     width: 10vh;
     margin: 5vh;
     filter: invert(0);

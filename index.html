@@ -7,46 +7,45 @@
         <script src="scipt.js"></script>
     </head>
     <body>
-        <div>
-          <div id="label">
-            <img id="icon" src="faces/cool.svg" alt="Face">
-            <h1>Catch Me</h1>
-          </div>
-        </div>
-        <div class="menu" id="index">
-          <h1 onclick="menu('play')">Play</h1>
-          <h1 onclick="menu('options')">Options</h1>
-          <h1 onclick="exit()">Exit</h1>
-        </div>
-        <div class="menu" id="play">
-          <h1 onclick="timed()">Timed</h1>
-          <h1 onclick="leveled()">Leveled</h1>
-          <h1 onclick="menu('index')">Back</h1>
-        </div>
-        <div class="menu" id="options">
-          <h1 onclick="menu('faces')">Faces</h1>
-          <h1 id="invert" onclick="invert()">Dark Mode</h1>
-          <h1 onclick="menu('index')">Back</h1>
-        </div>
-        <div id="faces">
-          <ul>
-            <li><img class="iconFaces" onclick="faces('faces/cool.svg')" src="faces/cool.svg" alt=""></li>
-            <li><img class="iconFaces" onclick="faces('faces/doubt-on.svg')" src="faces/doubt-on.svg" alt=""></li>
-            <li><img class="iconFaces" onclick="faces('faces/face-with-closed-eyes-and-tongue-out.svg')" src="faces/face-with-closed-eyes-and-tongue-out.svg" alt=""></li>
-            <li><img class="iconFaces" onclick="faces('faces/face-with-sunglasses.svg')" src="faces/face-with-sunglasses.svg" alt=""></li>
-            <li><img class="iconFaces" onclick="faces('faces/flushed.svg')" src="faces/flushed.svg" alt=""></li>
-            <li><img class="iconFaces" onclick="faces('faces/resting-face.svg')" src="faces/resting-face.svg" alt=""></li>
-            <li><img class="iconFaces" onclick="faces('faces/sad-sleepy-face.svg')" src="faces/sad-sleepy-face.svg" alt=""></li>
-            <li><img class="iconFaces" onclick="faces('faces/smile.svg')" src="faces/smile.svg" alt=""></li>
-            <li><img class="iconFaces" onclick="faces('faces/smiley-face.svg')" src="faces/smiley-face.svg" alt=""></li>
-            <li><img class="iconFaces" onclick="faces('faces/smiley-with-closed-eyes-face.svg')" src="faces/smiley-with-closed-eyes-face.svg" alt=""></li>
-            <li><img class="iconFaces" onclick="faces('faces/smiling-face-.svg')" src="faces/smiling-face-.svg" alt=""></li>
-            <li><img class="iconFaces" onclick="faces('faces/smiling-face-with-closed-eyes.svg')" src="faces/smiling-face-with-closed-eyes.svg" alt=""></li>
-            <li><img class="iconFaces" onclick="faces('faces/smirking.svg')" src="faces/smirking.svg" alt=""></li>
-            <li><img class="iconFaces" onclick="faces('faces/tongue.svg')" src="faces/tongue.svg" alt=""></li>
-            <li><img class="iconFaces" onclick="faces('faces/unamused.svg')" src="faces/unamused.svg" alt=""></li>
-          </ul>
-          <h1 onclick="exitFaces()">Back</h1>
-        </div>
-      </body>
+      <div id="background"></div>
+      <div id="label">
+        <img id="icon" src="faces/cool.svg" alt="Face">
+        <h1>Catch Me</h1>
+      </div>
+      <div class="menu" id="index">
+        <h1 onclick="menu('play')">Play</h1>
+        <h1 onclick="menu('options')">Options</h1>
+        <h1 onclick="exit()">Exit</h1>
+      </div>
+      <div class="menu" id="play">
+        <h1 onclick="timed()">Timed</h1>
+        <h1 onclick="leveled()">Leveled</h1>
+        <h1 onclick="menu('index')">Back</h1>
+      </div>
+      <div class="menu" id="options">
+        <h1 onclick="menu('faces')">Faces</h1>
+        <h1 id="invert" onclick="invert()">Dark Mode</h1>
+        <h1 onclick="menu('index')">Back</h1>
+      </div>
+      <div id="faces">
+        <ul>
+          <li onclick="faces('faces/cool.svg')"><img class="iconFaces" src="faces/cool.svg" alt=""></li>
+          <li onclick="faces('faces/doubt-on.svg')"><img class="iconFaces" src="faces/doubt-on.svg" alt=""></li>
+          <li onclick="faces('faces/face-with-closed-eyes-and-tongue-out.svg')"><img class="iconFaces" src="faces/face-with-closed-eyes-and-tongue-out.svg" alt=""></li>
+          <li onclick="faces('faces/face-with-sunglasses.svg')"><img class="iconFaces" src="faces/face-with-sunglasses.svg" alt=""></li>
+          <li onclick="faces('faces/flushed.svg')"><img class="iconFaces" src="faces/flushed.svg" alt=""></li>
+          <li onclick="faces('faces/resting-face.svg')"><img class="iconFaces" src="faces/resting-face.svg" alt=""></li>
+          <li onclick="faces('faces/sad-sleepy-face.svg')"><img class="iconFaces" src="faces/sad-sleepy-face.svg" alt=""></li>
+          <li onclick="faces('faces/smile.svg')"><img class="iconFaces" src="faces/smile.svg" alt=""></li>
+          <li onclick="faces('faces/smiley-face.svg')"><img class="iconFaces" src="faces/smiley-face.svg" alt=""></li>
+          <li onclick="faces('faces/smiley-with-closed-eyes-face.svg')"><img class="iconFaces" src="faces/smiley-with-closed-eyes-face.svg" alt=""></li>
+          <li onclick="faces('faces/smiling-face-.svg')"><img class="iconFaces" src="faces/smiling-face-.svg" alt=""></li>
+          <li onclick="faces('faces/smiling-face-with-closed-eyes.svg')"><img class="iconFaces" src="faces/smiling-face-with-closed-eyes.svg" alt=""></li>
+          <li onclick="faces('faces/smirking.svg')"><img class="iconFaces" src="faces/smirking.svg" alt=""></li>
+          <li onclick="faces('faces/tongue.svg')"><img class="iconFaces" src="faces/tongue.svg" alt=""></li>
+          <li onclick="faces('faces/unamused.svg')"><img class="iconFaces" src="faces/unamused.svg" alt=""></li>
+        </ul>
+        <h1 onclick="exitFaces()">Back</h1>
+      </div>
+    </body>
 </html>

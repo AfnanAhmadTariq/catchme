@@ -225,7 +225,11 @@ function invert(){
         document.documentElement.style.setProperty('--shadow', 'rgba(0, 0, 0, 0.1)');
         const face = document.getElementById('face');
         const icon = document.getElementById('icon');
+        const backFaces = document.getElementById('background');
         const iconFaces = document.getElementsByClassName('iconFaces');
+        if(backFaces){
+            backFaces.style.filter = "invert(0)";
+        }
         if(iconFaces){
             console.log('goia');
             for(var i=0; i<iconFaces.length; i++)
@@ -243,7 +247,11 @@ function invert(){
         document.documentElement.style.setProperty('--shadow', 'rgba(255, 255, 255, 0.1)');
         const face = document.getElementById('face');
         const icon = document.getElementById('icon');
+        const backFaces = document.getElementById('background');
         const iconFaces = document.getElementsByClassName('iconFaces');
+        if(backFaces){
+            backFaces.style.filter = "invert(1)";
+        }
         if(iconFaces)
             for(var i=0; i<iconFaces.length; i++)
                 iconFaces[i].style.filter = "invert(1)";
