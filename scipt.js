@@ -11,10 +11,6 @@ var endX;
 var endY;
 var lvlname; 
 
-//Local Storage
-var face = "faces/cool.svg";
-var screenMode = "light";
-
 //animation
 var initialPosition;
 var position;
@@ -23,8 +19,6 @@ var startTime;
 //Start
 function start() {
     document.getElementById('start').style.display = 'none';
-    image = document.getElementById('face');
-    document.getElementById('icon').src = image.src = face;
     time = document.getElementById('time-remaining');
     bodyWidth = document.body.offsetWidth;
     bodyHeight = document.body.offsetHeight;
@@ -219,7 +213,7 @@ function invert(){
     const rootStyles = getComputedStyle(document.documentElement);
     const primaryColor = rootStyles.getPropertyValue('--backgorund');
     if(primaryColor=="black"){
-        screenMode = "light";
+        sessionStorage.setItem('mode', "light");
         document.documentElement.style.setProperty('--backgorund', 'white');
         document.documentElement.style.setProperty('--font', 'black');
         document.documentElement.style.setProperty('--shadow', 'rgba(0, 0, 0, 0.1)');
@@ -241,7 +235,7 @@ function invert(){
         document.body.style.cursor = 'url("pointers/Black-Arrow.png"), auto';
     }
     else{
-        screenMode = "dark";
+        sessionStorage.setItem('mode', "dark");
         document.documentElement.style.setProperty('--backgorund', 'black');
         document.documentElement.style.setProperty('--font', 'white');
         document.documentElement.style.setProperty('--shadow', 'rgba(255, 255, 255, 0.1)');
@@ -270,13 +264,9 @@ function invert(){
 //Game Modes
 
 function timed() {
-    localStorage.setItem('face', face);
-    localStorage.setItem('mode', screenMode);
     window.location.href = 'timed.html';
 }
 function leveled() {
-    localStorage.setItem('face', face);
-    localStorage.setItem('mode', screenMode);
     window.location.href = 'leveled.html';
 }
 function menu(open){
@@ -291,16 +281,14 @@ function menu(open){
 }
 function faces(source){
     document.getElementById('icon').src = source;
-    face = source;
+    sessionStorage.setItem('face', source);
 }
 function exitFaces(){
     document.getElementById('faces').style.display='none';
     document.getElementById('options').style.display ='block';
 }
 function back(){
-  localStorage.setItem('back', "play");
-  localStorage.setItem('face', face);
-  localStorage.setItem('mode', screenMode);
+  sessionStorage.setItem('back', "play");
   window.location.href = "index.html";
 }
 function exit(){
@@ -309,21 +297,18 @@ function exit(){
 
 // //Event Listener
 document.addEventListener('DOMContentLoaded', function() {
-    var source = localStorage.getItem('face');
+    image = document.getElementById('face');
+    var source = sessionStorage.getItem('face');
     if(source){
-        face = source;
-        localStorage.removeItem('face');
+        document.getElementById('icon').src = source;
+        if(image)
+            image.src = source;
     }
-    var appearance = localStorage.getItem('mode');
-    if(appearance){
+    var appearance = sessionStorage.getItem('mode');
+    if(appearance)
         if(appearance=="dark")
             invert();
-        localStorage.removeItem('mode');
-    }
-    var passedValue = localStorage.getItem('back');
-    if (passedValue) {
-      menu(passedValue);
-      document.getElementById('icon').src = source;
-      localStorage.removeItem('back');
-    }
+    var passedValue = sessionStorage.getItem('back');
+    if (passedValue)
+        menu(passedValue);
 });

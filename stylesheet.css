@@ -112,6 +112,7 @@ body{
    filter: invert(1);
 }
 .iconFaces{
+    cursor: inherit;
     width: 10vh;
     margin: 5vh;
     filter: invert(0);
