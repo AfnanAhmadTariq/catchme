@@ -262,7 +262,6 @@ function invert(){
 }
 
 //Game Modes
-
 function timed() {
     window.location.href = 'timed.html';
 }
@@ -274,28 +273,23 @@ function menu(open){
     for (var i = 0; i < elements.length; i++) {
         elements[i].style.display = 'none';
     }
-    if(open=="faces")
-        document.getElementById('faces').style.display='block';
-    else
-        document.getElementById(open).style.display ='block';
+    if(open=="options")
+        document.getElementById('faces').style.display='none';
+    document.getElementById(open).style.display ='block';
+    sessionStorage.setItem('menu', open);
 }
 function faces(source){
     document.getElementById('icon').src = source;
     sessionStorage.setItem('face', source);
 }
-function exitFaces(){
-    document.getElementById('faces').style.display='none';
-    document.getElementById('options').style.display ='block';
-}
 function back(){
-  sessionStorage.setItem('back', "play");
-  window.location.href = "index.html";
+    window.location.href = "index.html";
 }
 function exit(){
     alert("Press ctrl + W");
 }
 
-// //Event Listener
+//Event Listener (On Load)
 document.addEventListener('DOMContentLoaded', function() {
     image = document.getElementById('face');
     var source = sessionStorage.getItem('face');
@@ -308,7 +302,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if(appearance)
         if(appearance=="dark")
             invert();
-    var passedValue = sessionStorage.getItem('back');
+    var passedValue = sessionStorage.getItem('menu');
     if (passedValue)
         menu(passedValue);
 });
