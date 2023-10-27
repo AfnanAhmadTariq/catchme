@@ -108,3 +108,12 @@ body{
     font-family: Arial, Helvetica, sans-serif;
     color:var(--font);
 }
+#copyright{
+    position: absolute;
+    margin: 2vh;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: small;
+    color: var(--font);
+    bottom: 0%;
+    float: left;
+}
